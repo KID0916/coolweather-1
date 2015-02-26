@@ -1,11 +1,13 @@
-package com.gdqyn.coolweather.model;
+package com.gdqyn.coolweather.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.gdqyn.coolweather.db.CoolWeatherOpenHelper;
+import com.gdqyn.coolweather.model.City;
+import com.gdqyn.coolweather.model.County;
+import com.gdqyn.coolweather.model.Province;
 
 import java.util.ArrayList;
 import java.util.List;
