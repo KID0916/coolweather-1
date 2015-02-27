@@ -143,12 +143,17 @@ public class ChooseAreaActivity extends Activity {
     }
 
     private void queryFromServer(final String code, final String type) {
-        String address;
+        String address = null;
         if (!TextUtils.isEmpty(code)) {
-            address = "http://www.weather.com.cn/data/" + code;
+            if ("city".equals(type)) {
+                address = "http://192.168.1.105/city/" + code;
+            }
+            if ("county".equals(type)) {
+                address = "http://192.168.1.105/city/" + selectedProvince.getProvinceCode() + code;
+            }
         }
         else {
-            address = "province";
+            address = "http://192.168.1.105/city/";
         }
         showProgressDialog();
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {
