@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gdqyn.coolweather.R;
+import com.gdqyn.coolweather.service.AutoUpdateService;
 import com.gdqyn.coolweather.util.HttpCallBackListener;
 import com.gdqyn.coolweather.util.HttpUtil;
 import com.gdqyn.coolweather.util.Utility;
@@ -55,7 +56,6 @@ public class WeatherActivity extends Activity {
             publishText.setText("同步中...");
             weatherInfoLayout.setVisibility(View.INVISIBLE);
             cityNameText.setVisibility(View.INVISIBLE);
-            Log.d("WeatherActivity", weatherCode);
             queryWeatherInfo(weatherCode);
         }
         else {
@@ -93,7 +93,6 @@ public class WeatherActivity extends Activity {
             @Override
             public void onFinish(String response) {
                 Utility.handleWeatherResponse(WeatherActivity.this, response);
-                Log.d("WeatherActivity", response);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -125,5 +124,8 @@ public class WeatherActivity extends Activity {
         currentDateText.setText(prefs.getString("current_date", ""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
