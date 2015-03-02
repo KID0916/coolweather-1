@@ -177,7 +177,7 @@ public class ChooseAreaActivity extends Activity {
             }
         }
         else {
-            address = "http://192.168.1.105/city/";
+            address = "http://gdqyn.sinaapp.com/city/";
         }
         showProgressDialog();
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {

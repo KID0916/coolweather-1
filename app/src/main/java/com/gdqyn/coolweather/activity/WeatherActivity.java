@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -88,7 +87,6 @@ public class WeatherActivity extends Activity {
 
     private void queryWeatherInfo(final String weatherCode) {
         final String address = "http://gdqyn.sinaapp.com/weather/" + weatherCode;
-        Log.d("WeatherActivity", address);
         HttpUtil.sendHttpRequest(address, new HttpCallBackListener() {
             @Override
             public void onFinish(String response) {
